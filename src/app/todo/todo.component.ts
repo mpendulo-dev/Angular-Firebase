@@ -10,7 +10,10 @@ import { TodoService } from './shared/todo.service';
 })
 export class TodoComponent implements OnInit {
 
+  // List array to store todos
   toDoListArray: any[];
+
+  // injecting todo service
   constructor(private todoService: TodoService) { }
 
   ngOnInit(): void {
@@ -35,4 +38,11 @@ export class TodoComponent implements OnInit {
     itemTitle.vallue = null;
   }
 
+  alterCheck($key: string, isChecked) {
+
+    this.todoService.checkOrUnCheckTitle($key, !isChecked);
+  }
+  onDelete($key: string) {
+    this.todoService.removeTitle($key);
+  }
 }
